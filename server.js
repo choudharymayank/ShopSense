@@ -29,11 +29,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //access static files
-app.use(express.static(path.join(__dirname,'./client')))
+app.use(express.static(path.join(__dirname,'./client/build')))
 
 //rest api
 app.use("*",function(req,res){
-  res.send(path.join(__dirname,'./client/index.html'))
+  res.send(path.join(__dirname,'./client/build', 'index.html'))
 })
 
 //routes
