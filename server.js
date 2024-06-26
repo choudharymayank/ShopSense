@@ -16,7 +16,7 @@ dotenv.config();
 //databse config
 connectDB();
 
-//es module fix 
+//es module fix  
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 
@@ -29,11 +29,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //access static files
-app.use(express.static(path.join(__dirname,'./client/build')))
+app.use(express.static(path.join(__dirname,'./client')))
 
 //rest api
 app.use("*",function(req,res){
-  res.send(path.join(__dirname,'./client/build', 'index.html'))
+  res.send(path.join(__dirname,'./client', 'index.html'))
 })
 
 //routes
@@ -43,7 +43,7 @@ app.use("/api/v1/product", productRoutes);
 
 //rest api
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to FoodSense-Food app</h1>");
+  res.send("<h1>Welcome to ShopSense</h1>");
 });
 
 //PORT
