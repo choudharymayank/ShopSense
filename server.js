@@ -7,6 +7,8 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 //configure env
 dotenv.config();
@@ -14,13 +16,25 @@ dotenv.config();
 //databse config
 connectDB();
 
+//es module fix 
+const __filename=fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename);
+
 //rest object
 const app = express();
 
-//middelwares
+//middlewares
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+
+//access static files
+app.use(express.static(path.join(__dirname,'./client/build')))
+
+//rest api
+app.use("*",function(req,res){
+  res.send(path.join(__dirname,'./client/build/index.html'))
+})
 
 //routes
 app.use("/api/v1/auth", authRoutes);
