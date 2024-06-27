@@ -110,7 +110,7 @@ const HomePage = () => {
     <Layout title={"All Products - Best offers "}>
       {/* banner image */}
       <img
-        src="/Images/Banner.JPG"
+        src="/Images/Banner.jpg"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
