@@ -28,23 +28,21 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-//access static files
-app.use(express.static(path.join(__dirname,'./client/build')))
-
-//rest api
-app.use("*",function(req,res){
-  res.send(path.join(__dirname,'./client/build', 'index.html'))
-})
-
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
+//access static files
+app.use(express.static(path.resolve(__dirname,'client','build')))
+
 //rest api
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome to ShopSense</h1>");
-});
+app.get("*",function(req,res){
+  res.sendFile(path.resolve(__dirname,'client','build', 'index.html'))
+})
+
+
+//rest api
 
 //PORT
 const PORT = process.env.PORT || 8080;
