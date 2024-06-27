@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
-import Banner from "../Images/Banner.JPG"
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -111,7 +110,7 @@ const HomePage = () => {
     <Layout title={"All Products - Best offers "}>
       {/* banner image */}
       <img
-        src={Banner}
+        src="/Images/Banner.JPG"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
